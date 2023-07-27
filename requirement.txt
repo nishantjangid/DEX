@@ -1,0 +1,25 @@
+**Assignment Title:** Building a DeFi Liquidity Pool Contract and Interacting Microservice
+**Objective:** To develop a simple DeFi liquidity pool smart contract using Solidity and a corresponding microservice using NestJS/NodeJS to interact with it.
+**Part 1: Smart Contract Development**
+1. **Create a Simple Token Contract:** Develop an ERC20 token contract using Solidity. The token should have basic functionalities such as `mint`, `burn`, `transfer`, and `balanceOf`.
+2. **Create a Liquidity Pool Contract:** Develop a simple DeFi liquidity pool contract. Users should be able to:
+  - Deposit ERC20 tokens into the pool, in return they should receive 'LP' (Liquidity Provider) tokens proportional to their share of the pool.
+  - Withdraw their tokens by burning their LP tokens.
+3. **Smart Contract Testing:** Write test cases for the above smart contracts using a framework like Truffle. The tests should cover all the contract functionalities and edge cases.
+**Part 2: NestJS/NodeJS Microservice**
+Develop a NestJS/NodeJS microservice that does the following:
+1. **Connects to Ethereum node:** The service should be able to connect to a local Ethereum testnet node (like Ganache).
+2. **Interact with Smart Contracts:** Write functionalities to:
+  - Deploy the contracts onto the Ethereum testnet.
+  - Interact with the smart contracts (such as minting tokens, adding liquidity to the pool, and removing liquidity).
+  
+3. **API Endpoints:** Create REST API endpoints to interact with the smart contracts:
+  - An endpoint to mint new tokens.
+  - An endpoint to add liquidity to the pool.
+  - An endpoint to remove liquidity from the pool.
+**Evaluation Criteria:**
+1. **Functionality:** The contracts and the service should work as intended without any errors.
+2. **Code Quality:** The code should be well-written, modular, and maintainable.
+3. **Security:** The contracts should handle all edge cases and prevent any potential security risks.
+4. **Testing:** All contracts should be thoroughly tested.
+5. **Documentation:** The code should be well-documented and should include instructions to set up and run the microservice.
