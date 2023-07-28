@@ -5,8 +5,8 @@ describe("LiquidityPool", function () {
   let liquidityPool;
   let tokenA;
   let tokenB;
-  let uniswapRouter;
-  let uniswapFactory;
+  let uniswapRouter="0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
+  let uniswapFactory="0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f";
   let owner;
   let addr1;
 
@@ -15,30 +15,20 @@ describe("LiquidityPool", function () {
   beforeEach(async function () {
     [owner, addr1] = await ethers.getSigners();
 
-    // Deploy the Uniswap Router mock contract
-    const UniswapRouterMock = await ethers.getContractFactory("UniswapRouterMock");
-    uniswapRouter = await UniswapRouterMock.deploy();
-    await uniswapRouter.deployed();
-
-    // Deploy the Uniswap Factory mock contract
-    const UniswapFactoryMock = await ethers.getContractFactory("UniswapFactoryMock");
-    uniswapFactory = await UniswapFactoryMock.deploy();
-    await uniswapFactory.deployed();
-
     // Deploy TokenA and TokenB
-    const TokenA = await ethers.getContractFactory("TokenA");
+    const TokenA = await ethers.getContractFactory("TOKENTESTA");
     tokenA = await TokenA.deploy(INITIAL_SUPPLY);
     await tokenA.deployed();
 
-    const TokenB = await ethers.getContractFactory("TokenB");
+    const TokenB = await ethers.getContractFactory("TOKENTESTB");
     tokenB = await TokenB.deploy(INITIAL_SUPPLY);
     await tokenB.deployed();
 
     // Deploy the LiquidityPool contract
-    const LiquidityPool = await ethers.getContractFactory("LiquidityPool");
+    const LiquidityPool = await ethers.getContractFactory("DEX");
     liquidityPool = await LiquidityPool.deploy(
-      uniswapRouter.address,
-      uniswapFactory.address,
+      uniswapRouter,
+      uniswapFactory,
       tokenA.address,
       tokenB.address
     );
