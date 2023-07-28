@@ -18,11 +18,11 @@ const addLiquidity = (amounta,amountb) => {
             let amountbPay = web3.utils.toWei(amountb.toString(),'ether');
             let gasPrice = await web3.eth.getGasPrice();
             // console.log(amountaPay," a")
-            // let gasLimitA = await tokenAContract.methods.approve(DEX,amountaPay).estimateGas({from:process.env.ADDRESS});
-            // let approveA = await tokenAContract.methods.approve(DEX,amountaPay).send({from:process.env.ADDRESS,gasLimit:gasLimitA,gasPrice});
+            let gasLimitA = await tokenAContract.methods.approve(DEX,amountaPay).estimateGas({from:process.env.ADDRESS});
+            let approveA = await tokenAContract.methods.approve(DEX,amountaPay).send({from:process.env.ADDRESS,gasLimit:gasLimitA,gasPrice});
             // console.log(amountbPay," b")
-            // let gasLimitB = await tokenBContract.methods.approve(DEX,amountbPay).send({from:process.env.ADDRESS});
-            // let approveB = await tokenBContract.methods.approve(DEX,amountbPay).send({from:process.env.ADDRESS,gasLimit:gasLimitB,gasPrice});
+             let gasLimitB = await tokenBContract.methods.approve(DEX,amountbPay).send({from:process.env.ADDRESS});
+             let approveB = await tokenBContract.methods.approve(DEX,amountbPay).send({from:process.env.ADDRESS,gasLimit:gasLimitB,gasPrice});
             // console.log("now liquidity providing")
             let gasLimit = await contract.methods.addLiquidity(TokenA,TokenB,amountaPay,amountbPay).estimateGas({from:process.env.ADDRESS})
             let addLiquidity = await contract.methods.addLiquidity(TokenA,TokenB,amountaPay,amountbPay).send({from:process.env.ADDRESS,gasLimit,gasPrice})
