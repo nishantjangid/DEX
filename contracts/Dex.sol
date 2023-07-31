@@ -13,6 +13,8 @@ contract Dex {
         uint _amountA,
         uint _amountB
     ) external {
+        require(_amountA !=0,"Amount A must be greater then zero");
+        require(_amountB !=0,"Amount B must be greater then zero");
         safeTransferFrom(IERC20(_tokenA), msg.sender, address(this), _amountA);
         safeTransferFrom(IERC20(_tokenB), msg.sender, address(this), _amountB);
 
@@ -25,9 +27,9 @@ contract Dex {
                 _tokenB,
                 _amountA,
                 _amountB,
-                1,
-                1,
-                address(this),
+                0,
+                0,
+                msg.sender,
                 block.timestamp
             );
     }
@@ -42,9 +44,9 @@ contract Dex {
             _tokenA,
             _tokenB,
             liquidity,
-            1,
-            1,
-            address(this),
+            0,
+            0,
+            msg.sender,
             block.timestamp
         );
     }
